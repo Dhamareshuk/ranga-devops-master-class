@@ -23,8 +23,8 @@ spec:
     spec:
       containers:
       - name: currency-exchange
-        image: in28min/currency-exchange-devops
-        imagePullPolicy: IfNotPresent
+        image: dhamareshuk/currency-exchange:0.0.1.RELEASE
+        imagePullPolicy: Always
         ports:
         - name: liveness-port
           containerPort: 8000
@@ -61,11 +61,11 @@ metadata:
   namespace: default
 spec:
   ports:
-  - # nodePort: 30702 #CHANGE
+  - # NodePort: 30702 #CHANGE
     port: 8000 #CHANGE
     protocol: TCP
     targetPort: 8000 #CHANGE
   selector:
     app: currency-exchange
   sessionAffinity: None #CHANGE
-  type: LoadBalancer
+  type: NodePort

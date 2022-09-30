@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    cloud.google.com/neg: '{"ingress":true}'
+  creationTimestamp: "2022-09-28T11:22:47Z"
+  finalizers:
+  - service.kubernetes.io/load-balancer-cleanup
+  labels:
+    app: hello-world-python
+  name: hello-world-python
+  namespace: default
+  resourceVersion: "29498"
+  uid: a4e67ed6-794c-4c05-9ecb-e576379cab67
+spec:
+  allocateLoadBalancerNodePorts: true
+  clusterIP: 10.104.7.55
+  clusterIPs:
+  - 10.104.7.55
+  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - nodePort: 30604
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: hello-world-python
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+    - ip: 34.69.243.7
